@@ -117,19 +117,6 @@ journalctl --user -u rclone-bisync-gdrive.service -f
 
 **Note:** User services run as your user account and have automatic access to your home directory and rclone config.
 
-## Usage
-
-```bash
-# Normal periodic sync (NO --resync flag)
-./rclone-bisync-gdrive.sh
-
-# First run or after config changes (USE --first-run)
-./rclone-bisync-gdrive.sh --first-run
-
-# Force resync (only if you know what you're doing)
-./rclone-bisync-gdrive.sh --resync
-```
-
 ## License
 
 GNU General Public License v3 - see [LICENSE](LICENSE) for details.
