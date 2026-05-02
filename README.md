@@ -95,6 +95,12 @@ Verify the change propagated to the other side.
 
 #### 5. (Optional) Install as systemd user service
 
+Use the provided install script for easy setup:
+```bash
+./install.sh
+```
+
+Or manually:
 ```bash
 # Copy service files to user service directory
 mkdir -p ~/.config/systemd/user/
@@ -123,45 +129,6 @@ journalctl --user -u rclone-bisync-gdrive.service -f
 # Force resync (only if you know what you're doing)
 ./rclone-bisync-gdrive.sh --resync
 ```
-
-## Recovery
-
-### Restore a Deleted File
-```bash
-# List backup contents
-rclone lsl gdrive:Documents/_bisync_backup/
-
-# Restore a specific file
-rclone copy gdrive:Documents/_bisync_backup/file.txt ~/Documents/
-```
-
-### Bisync Requires --resync
-If you see: `Must run --resync to recover`
-```bash
-./rclone-bisync-gdrive.sh --first-run
-```
-
-### State File Corruption
-```bash
-# Backup the old state file
-mv ~/.local/share/rclone-bisync-gdrive/state.json ~/.local/share/rclone-bisync-gdrive/state.json.bak
-
-# Rebuild state with dry run
-./rclone-bisync-gdrive.sh --first-run --dry-run
-
-# Review, then run for real
-./rclone-bisync-gdrive.sh --first-run
-```
-
-## Files
-
-| File | Purpose |
-|------|---------|
-| `rclone-bisync-gdrive.sh` | Main sync script |
-| `rclone-bisync-gdrive.service` | Systemd service file |
-| `rclone-bisync-gdrive.timer` | Systemd timer file |
-| `.env.example` | Environment variable template |
-| `LICENSE` | GPLv3 License |
 
 ## License
 
