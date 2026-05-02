@@ -1,0 +1,15 @@
+[Unit]
+Description=Run rclone-bisync-gdrive every 15 minutes
+
+[Timer]
+# Runs at 0, 15, 30, and 45 minutes past each hour
+OnCalendar=*:0,15,30,45
+Persistent=true
+
+# Alternative schedules (uncomment one):
+# Every hour: OnCalendar=hourly
+# Every 30 minutes: OnCalendar=*:0,30
+# Every 5 minutes: OnCalendar=*:0,5,10,15,20,25,30,35,40,45,50,55
+
+[Install]
+WantedBy=timers.target

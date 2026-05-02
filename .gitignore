@@ -1,1 +1,4 @@
 .env
+.rclone-bisync-state.json
+.rclone-bisync.log
+test
